@@ -1,10 +1,21 @@
-import 'package:authentication_microservice/screens/login/login_page.dart';
+import 'package:authentication_microservice/controllers/login_controller.dart';
 import 'package:authentication_microservice/screens/main_app/main_app.dart';
+import 'package:authentication_microservice/service/appwrite/appwrite_service.dart';
+import 'package:authentication_microservice/service/provider/login_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppWriteService.instance.init();
+  runApp(
+    MultiProvider(
+        providers: [ChangeNotifierProvider(create: (_) => LoginProvider()),],
+      child: const MyApp()
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -34,11 +45,11 @@ class _AuthMicroServiceState extends State<AuthMicroService> {
   final _router = GoRouter(
     routes: [
       GoRoute(
-        name: 'login',
+        name: 'pageController',
         path: '/',
         pageBuilder: (context, state) => NoTransitionPage(
           key: state.pageKey,
-          child: const LoginPage(),
+          child: const LoginController(),
         ),
       ),
       GoRoute(
