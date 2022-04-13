@@ -12,6 +12,7 @@ class SignUpField extends StatefulWidget {
 
 class _SignUpFieldState extends State<SignUpField> {
   final _formKey = GlobalKey<FormState>();
+  bool _isObscured = true;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +24,7 @@ class _SignUpFieldState extends State<SignUpField> {
             padding: const EdgeInsets.symmetric(horizontal: 50),
             child: TextFormField(
               decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.person),
                 border: OutlineInputBorder(),
                 labelText: 'Enter Name',
                 labelStyle: TextStyle(
@@ -42,7 +44,9 @@ class _SignUpFieldState extends State<SignUpField> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50),
             child: TextFormField(
+              obscureText: true,
               decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.email),
                 border: OutlineInputBorder(),
                 labelText: 'Enter Email',
                 labelStyle: TextStyle(
@@ -62,10 +66,22 @@ class _SignUpFieldState extends State<SignUpField> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50),
             child: TextFormField(
-              decoration: const InputDecoration(
+              obscureText: _isObscured,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.lock),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _isObscured ? Icons.visibility : Icons.visibility_off,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _isObscured = !_isObscured;
+                    });
+                  },
+                ),
                 border: OutlineInputBorder(),
                 labelText: 'Create Password',
-                labelStyle: TextStyle(
+                labelStyle: const TextStyle(
                   color: Colors.grey,
                   fontSize: 18,
                 ),

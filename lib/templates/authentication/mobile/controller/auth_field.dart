@@ -12,6 +12,7 @@ class AuthField extends StatefulWidget {
 
 class _AuthFieldState extends State<AuthField> {
   final _formKey = GlobalKey<FormState>();
+  bool _isObscured = true;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +25,7 @@ class _AuthFieldState extends State<AuthField> {
             padding: const EdgeInsets.symmetric(horizontal: 50),
             child: TextFormField(
               decoration: const InputDecoration(
+               prefixIcon: Icon(Icons.email),
                 border: OutlineInputBorder(),
                 labelText: 'Email',
                 labelStyle: TextStyle(
@@ -43,10 +45,22 @@ class _AuthFieldState extends State<AuthField> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50),
             child: TextFormField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
+              obscureText: _isObscured,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.lock),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _isObscured ? Icons.visibility : Icons.visibility_off,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _isObscured = !_isObscured;
+                    });
+                  },
+                ),
+                border: const OutlineInputBorder(),
                 labelText: 'Password',
-                labelStyle: TextStyle(
+                labelStyle: const TextStyle(
                   color: Colors.grey,
                   fontSize: 18,
                 ),

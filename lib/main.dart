@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AppWriteService.instance.init();
-  await dotenv.load(fileName: 'assets/env/env');
+  // await dotenv.load(fileName: 'assets/env/env');
   runApp(
     MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => LoginProvider()),],
