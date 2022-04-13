@@ -9,7 +9,7 @@ class Templates extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Templates'),
+        title: const Text('Templates'),
       ),
       body: GridView.count(
         primary: false,
@@ -19,7 +19,7 @@ class Templates extends StatelessWidget {
         crossAxisCount: 2,
         children: <Widget>[
           GestureDetector(
-            onTap: () => context.goNamed('authentication'),
+            onTap: () => context.push('/authentication'),
             child: Container(
               padding: const EdgeInsets.all(8),
               child: Column(
@@ -30,31 +30,6 @@ class Templates extends StatelessWidget {
               ),
               color: Colors.teal[100],
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(8),
-            child: const Text('Heed not the rabble'),
-            color: Colors.teal[200],
-          ),
-          Container(
-            padding: const EdgeInsets.all(8),
-            child: const Text('Sound of screams but the'),
-            color: Colors.teal[300],
-          ),
-          Container(
-            padding: const EdgeInsets.all(8),
-            child: const Text('Who scream'),
-            color: Colors.teal[400],
-          ),
-          Container(
-            padding: const EdgeInsets.all(8),
-            child: const Text('Revolution is coming...'),
-            color: Colors.teal[500],
-          ),
-          Container(
-            padding: const EdgeInsets.all(8),
-            child: const Text('Revolution, they...'),
-            color: Colors.teal[600],
           ),
         ],
       ),

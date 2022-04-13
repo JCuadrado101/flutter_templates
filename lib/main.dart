@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_templates/templates/authentication/authentication.dart';
+import 'package:flutter_templates/templates/authentication/pages/authentication.dart';
 import 'package:flutter_templates/templates/templates.dart';
 import 'package:go_router/go_router.dart';
 
