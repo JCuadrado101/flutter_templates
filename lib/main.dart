@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_templates/templates/authentication/pages/authentication.dart';
+import 'package:flutter_templates/templates/authentication/pages/auth.dart';
+import 'package:flutter_templates/templates/authentication/pages/login.dart';
 import 'package:flutter_templates/templates/templates.dart';
 import 'package:go_router/go_router.dart';
 
@@ -26,6 +27,11 @@ class _MyAppState extends State<MyApp> {
         name: 'authentication',
         path: '/authentication',
         builder: (BuildContext context, GoRouterState state) => const Authentication(),
+      ),
+      GoRoute(
+        name: 'login',
+        path: '/login',
+        builder: (BuildContext context, GoRouterState state) => const Login(),
       ),
     ],
   );

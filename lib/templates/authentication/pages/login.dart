@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../controller/auth_field.dart';
 
-class Authentication extends StatelessWidget {
-  const Authentication({Key? key}) : super(key: key);
+class Login extends StatelessWidget {
+  const Login({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
