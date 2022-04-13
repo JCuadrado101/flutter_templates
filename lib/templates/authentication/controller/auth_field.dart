@@ -67,27 +67,72 @@ class _AuthFieldState extends State<AuthField> {
             ),
           ),
           const SizedBox(height: 100),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: Colors.purple,
-              padding: const EdgeInsets.symmetric(
-                  vertical: 20,
-                  horizontal: 100
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-              ),
-            ),
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                print('success');
-              }
-            },
-            child: const Text(
-              'Login',
-              style: TextStyle(
-                color: Colors.white,
-              ),
+          SizedBox(
+            height: 180,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.purple,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 151
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      print('success');
+                    }
+                  },
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text('--------------------  '),
+                    Text('or', style: TextStyle(color: Colors.black, fontSize: 18)),
+                    Text('  ------------------'),
+                  ],
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 145
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: const BorderSide(
+                        color: Colors.purple,
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      print('success');
+                    }
+                  },
+                  child: const Text(
+                    'Sign Up',
+                    style: TextStyle(
+                      color: Colors.purple,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../controller/auth_field.dart';
 
 class Login extends StatelessWidget {
@@ -22,7 +23,14 @@ class Login extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 80),
+            const SizedBox(height: 40),
+            IconButton(
+              onPressed: () => context.goNamed('authentication'),
+              icon: const Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
@@ -34,16 +42,17 @@ class Login extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(height: 40),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(top: 50),
+                padding: const EdgeInsets.only(top: 100),
                 child: Container(
                   width: double.infinity,
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(80),
-                      topRight: Radius.circular(80)
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30)
                     ),
                   ),
                   child: Column(
