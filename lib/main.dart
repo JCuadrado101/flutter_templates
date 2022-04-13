@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_templates/templates/authentication/pages/auth.dart';
-import 'package:flutter_templates/templates/authentication/pages/login.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_templates/service/appwrite/appwrite_service.dart';
+import 'package:flutter_templates/service/provider/login_provider.dart';
+import 'package:flutter_templates/templates/mobile/authentication/pages/auth.dart';
+import 'package:flutter_templates/templates/mobile/authentication/pages/login.dart';
+import 'package:flutter_templates/templates/mobile/authentication/pages/sign_up.dart';
 import 'package:flutter_templates/templates/templates.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppWriteService.instance.init();
+  await dotenv.load(fileName: '.env/env');
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => LoginProvider()),],
+      child: const MyApp()
+    )
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -32,6 +45,11 @@ class _MyAppState extends State<MyApp> {
         name: 'login',
         path: '/login',
         builder: (BuildContext context, GoRouterState state) => const Login(),
+      ),
+      GoRoute(
+        name: 'signup',
+        path: '/signup',
+        builder: (BuildContext context, GoRouterState state) => const SignUp(),
       ),
     ],
   );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 
 class Authentication extends StatelessWidget {
   const Authentication({Key? key}) : super(key: key);
@@ -26,6 +27,10 @@ class Authentication extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Lottie.asset(
+                'assets/logo_auth.json',
+                repeat: false,
+              ),
               const SizedBox(height: 100),
               const Text(
                 'Authentication',
@@ -55,7 +60,7 @@ class Authentication extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onPressed: () => context.goNamed('login'),
+                  onPressed: () => context.pushNamed('login'),
                   child: const Text(
                     'Log In',
                     style: TextStyle(
@@ -82,7 +87,7 @@ class Authentication extends StatelessWidget {
                       ),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () => context.pushNamed('signup'),
                   child: const Text(
                     'Sign Up',
                     style: TextStyle(

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class AuthField extends StatefulWidget {
-  const AuthField({
+class SignUpField extends StatefulWidget {
+  const SignUpField({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<AuthField> createState() => _AuthFieldState();
+  State<SignUpField> createState() => _SignUpFieldState();
 }
 
-class _AuthFieldState extends State<AuthField> {
+class _SignUpFieldState extends State<SignUpField> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -23,7 +24,27 @@ class _AuthFieldState extends State<AuthField> {
             child: TextFormField(
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Email',
+                labelText: 'Enter Name',
+                labelStyle: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 18,
+                ),
+              ),
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Please enter a valid name.';
+                }
+                return null;
+              },
+            ),
+          ),
+          const SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 50),
+            child: TextFormField(
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Enter Email',
                 labelStyle: TextStyle(
                   color: Colors.grey,
                   fontSize: 18,
@@ -43,7 +64,7 @@ class _AuthFieldState extends State<AuthField> {
             child: TextFormField(
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                labelText: 'Password',
+                labelText: 'Create Password',
                 labelStyle: TextStyle(
                   color: Colors.grey,
                   fontSize: 18,
@@ -58,15 +79,6 @@ class _AuthFieldState extends State<AuthField> {
             ),
           ),
           const SizedBox(height: 20),
-          const TextButton(
-            onPressed: null,
-            child: Text('Forgot Password?',
-              style: TextStyle(
-                  color: Colors.grey
-              ),
-            ),
-          ),
-          const SizedBox(height: 100),
           SizedBox(
             height: 180,
             child: Column(
@@ -89,7 +101,7 @@ class _AuthFieldState extends State<AuthField> {
                     }
                   },
                   child: const Text(
-                    'Login',
+                    'Sign Up',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -109,7 +121,7 @@ class _AuthFieldState extends State<AuthField> {
                     primary: Colors.white,
                     padding: const EdgeInsets.symmetric(
                         vertical: 20,
-                        horizontal: 145
+                        horizontal: 130
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -119,13 +131,9 @@ class _AuthFieldState extends State<AuthField> {
                       ),
                     ),
                   ),
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      print('success');
-                    }
-                  },
+                  onPressed: () => context.push('/login'),
                   child: const Text(
-                    'Sign Up',
+                    'Back to Login',
                     style: TextStyle(
                       color: Colors.purple,
                       fontSize: 16,
