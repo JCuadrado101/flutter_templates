@@ -42,7 +42,7 @@ class Login extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 100),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(top: 100),
@@ -55,12 +55,7 @@ class Login extends StatelessWidget {
                       topRight: Radius.circular(30)
                     ),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: const [
-                      AuthField(),
-                    ],
-                  ),
+                  child: const AuthField(),
                 ),
               ),
             ),

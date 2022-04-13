@@ -18,6 +18,7 @@ class _AuthFieldState extends State<AuthField> {
     return Form(
       key: _formKey,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -59,15 +60,15 @@ class _AuthFieldState extends State<AuthField> {
             ),
           ),
           const SizedBox(height: 20),
-          const TextButton(
-            onPressed: null,
-            child: Text('Forgot Password?',
+          TextButton(
+            onPressed: () {},
+            child: const Text('Forgot Password?',
               style: TextStyle(
                   color: Colors.grey
               ),
             ),
           ),
-          const SizedBox(height: 100),
+          const SizedBox(height: 20),
           SizedBox(
             height: 180,
             child: Column(
@@ -102,7 +103,7 @@ class _AuthFieldState extends State<AuthField> {
                   children: const [
                     Text('--------------------  '),
                     Text('or', style: TextStyle(color: Colors.black, fontSize: 18)),
-                    Text('  ------------------'),
+                    Text('  --------------------'),
                   ],
                 ),
                 ElevatedButton(

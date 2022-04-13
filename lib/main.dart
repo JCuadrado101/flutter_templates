@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_templates/service/appwrite/appwrite_service.dart';
-import 'package:flutter_templates/service/provider/login_provider.dart';
-import 'package:flutter_templates/templates/mobile/authentication/pages/auth.dart';
-import 'package:flutter_templates/templates/mobile/authentication/pages/login.dart';
-import 'package:flutter_templates/templates/mobile/authentication/pages/sign_up.dart';
+import 'package:flutter_templates/templates/authentication/mobile/pages/auth.dart';
+import 'package:flutter_templates/templates/authentication/mobile/pages/login.dart';
+import 'package:flutter_templates/templates/authentication/mobile/pages/sign_up.dart';
+import 'package:flutter_templates/templates/authentication/service/appwrite/appwrite_service.dart';
+import 'package:flutter_templates/templates/authentication/service/provider/login_provider.dart';
 import 'package:flutter_templates/templates/templates.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AppWriteService.instance.init();
-  await dotenv.load(fileName: '.env/env');
+  await dotenv.load(fileName: 'assets/env/env');
   runApp(
     MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => LoginProvider()),],

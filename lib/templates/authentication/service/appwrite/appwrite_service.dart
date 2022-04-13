@@ -1,6 +1,6 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/login_provider.dart';
@@ -20,8 +20,8 @@ class AppWriteService {
 
   init() {
     client
-        .setEndpoint('${dotenv.env['ENDPOINT']}')
-        .setProject('${dotenv.env['PROJECT']}')
+        .setEndpoint('http://localhost/v1/')
+        .setProject('624b92f02b5c75f0c292')
         .setSelfSigned();
     account = Account(client);
     database = Database(client);

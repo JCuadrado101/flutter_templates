@@ -113,7 +113,7 @@ class _SignUpFieldState extends State<SignUpField> {
                   children: const [
                     Text('--------------------  '),
                     Text('or', style: TextStyle(color: Colors.black, fontSize: 18)),
-                    Text('  ------------------'),
+                    Text('  --------------------'),
                   ],
                 ),
                 ElevatedButton(
