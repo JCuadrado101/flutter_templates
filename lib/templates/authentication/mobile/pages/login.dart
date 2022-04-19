@@ -25,7 +25,7 @@ class Login extends StatelessWidget {
           children: [
             const SizedBox(height: 40),
             IconButton(
-              onPressed: () => context.goNamed('authentication'),
+              onPressed: () => context.goNamed('checkAuth'),
               icon: const Icon(
                 Icons.arrow_back,
                 color: Colors.white,

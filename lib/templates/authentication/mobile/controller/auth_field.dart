@@ -13,6 +13,8 @@ class AuthField extends StatefulWidget {
 class _AuthFieldState extends State<AuthField> {
   final _formKey = GlobalKey<FormState>();
   bool _isObscured = true;
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class _AuthFieldState extends State<AuthField> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50),
             child: TextFormField(
+              controller: _emailController,
               decoration: const InputDecoration(
                prefixIcon: Icon(Icons.email),
                 border: OutlineInputBorder(),
@@ -45,6 +48,7 @@ class _AuthFieldState extends State<AuthField> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50),
             child: TextFormField(
+              controller: _passwordController,
               obscureText: _isObscured,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.lock),
@@ -101,7 +105,7 @@ class _AuthFieldState extends State<AuthField> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      print('success');
+
                     }
                   },
                   child: const Text(

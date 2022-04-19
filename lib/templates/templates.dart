@@ -19,7 +19,7 @@ class Templates extends StatelessWidget {
         crossAxisCount: 2,
         children: <Widget>[
           GestureDetector(
-            onTap: () => context.push('/authentication'),
+            onTap: () => context.push('/checkAuth'),
             child: Container(
               padding: const EdgeInsets.all(8),
               child: Column(

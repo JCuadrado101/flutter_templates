@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_templates/templates/authentication/mobile/pages/auth.dart';
+import 'package:flutter_templates/templates/authentication/mobile/controller/check_auth.dart';
 import 'package:flutter_templates/templates/authentication/mobile/pages/login.dart';
 import 'package:flutter_templates/templates/authentication/mobile/pages/sign_up.dart';
 import 'package:flutter_templates/templates/authentication/service/appwrite/appwrite_service.dart';
@@ -11,8 +11,8 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: 'assets/environment/env');
   await AppWriteService.instance.init();
-  // await dotenv.load(fileName: 'assets/env/env');
   runApp(
     MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => LoginProvider()),],
@@ -37,9 +37,9 @@ class _MyAppState extends State<MyApp> {
         builder: (BuildContext context, GoRouterState state) => const Templates(),
       ),
       GoRoute(
-        name: 'authentication',
-        path: '/authentication',
-        builder: (BuildContext context, GoRouterState state) => const Authentication(),
+        name: 'checkAuth',
+        path: '/checkAuth',
+        builder: (BuildContext context, GoRouterState state) => const CheckAuth(),
       ),
       GoRoute(
         name: 'login',

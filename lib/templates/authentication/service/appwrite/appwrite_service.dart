@@ -1,5 +1,7 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
@@ -20,11 +22,29 @@ class AppWriteService {
 
   init() {
     client
-        .setEndpoint('http://localhost/v1/')
-        .setProject('624b92f02b5c75f0c292')
+        .setEndpoint(dotenv.env['PROJECTID']!)
+        .setProject('625769aec7ef86b7e582')
         .setSelfSigned();
     account = Account(client);
     database = Database(client);
+  }
+
+  Future<void> createUser(String name, String email, String password, BuildContext context) async {
+    try {
+      await account?.create(
+        userId: 'unique()',
+        name: name,
+        email: email,
+        password: password,
+      );
+      const SnackBar(
+        content: Text('User created successfully'),
+      );
+    } catch (e) {
+      SnackBar(
+        content: Text(e.toString()),
+      );
+    }
   }
 
   Future<void> createSession(String email, String password, BuildContext context) async {
