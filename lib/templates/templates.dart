@@ -31,6 +31,19 @@ class Templates extends StatelessWidget {
               color: Colors.teal[100],
             ),
           ),
+          GestureDetector(
+            onTap: () => context.push('/checkAuth'),
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              child: Column(
+                children: <Widget>[
+                  const Expanded(child: Image(image: AssetImage('riverpod.png'))),
+                  Text('Riverpod', style: Theme.of(context).textTheme.headline6,),
+                ],
+              ),
+              color: Colors.teal[100],
+            ),
+          ),
         ],
       ),
     );
