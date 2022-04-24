@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-ThemeData buildThemeData1() {
+ThemeData buildThemeDark1() {
   return ThemeData(
+    brightness: Brightness.dark,
     primarySwatch: Colors.blue,
     primaryColor: Colors.yellow,
     primaryColorDark: Colors.green,
@@ -15,16 +16,16 @@ ThemeData buildThemeData1() {
     ),
     appBarTheme: AppBarTheme(
       color: Colors.blue, toolbarTextStyle: const TextTheme(
-        subtitle1: TextStyle(
-          color: Colors.white,
-          fontSize: 20.0,
-        ),
-      ).bodyText2, titleTextStyle: const TextTheme(
-        subtitle1: TextStyle(
-          color: Colors.white,
-          fontSize: 20.0,
-        ),
-      ).headline6,
+      subtitle1: TextStyle(
+        color: Colors.white,
+        fontSize: 20.0,
+      ),
+    ).bodyText2, titleTextStyle: const TextTheme(
+      subtitle1: TextStyle(
+        color: Colors.white,
+        fontSize: 20.0,
+      ),
+    ).headline6,
       centerTitle: true,
       iconTheme: const IconThemeData(
         color: Colors.white,
@@ -34,8 +35,9 @@ ThemeData buildThemeData1() {
 }
 
 
-ThemeData buildThemeData2() {
+ThemeData buildThemeDark2() {
   return ThemeData(
+    brightness: Brightness.dark,
     primarySwatch: Colors.green,
     primaryColor: Colors.deepPurpleAccent,
     primaryColorDark: Colors.green,
@@ -68,8 +70,9 @@ ThemeData buildThemeData2() {
 }
 
 
-ThemeData buildThemeData3() {
+ThemeData buildThemeDark3() {
   return ThemeData(
+    brightness: Brightness.dark,
     primarySwatch: Colors.red,
     primaryColor: Colors.white,
     primaryColorDark: Colors.white,
@@ -95,7 +98,7 @@ ThemeData buildThemeData3() {
     ).headline6,
       centerTitle: true,
       iconTheme: const IconThemeData(
-        color: Colors.green,
+        color: Colors.white,
       ),
     ),
   );

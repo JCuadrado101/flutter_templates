@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_templates/service/routes/gorouter.dart';
 import 'package:flutter_templates/templates/authentication/service/appwrite/appwrite_service.dart';
-import 'package:flutter_templates/templates/theming/theme.dart';
+import 'package:flutter_templates/templates/theming/theme_dark.dart';
+import 'package:flutter_templates/templates/theming/theme_light.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,9 +32,15 @@ class MyApp extends ConsumerWidget {
           routeInformationParser: _router.routeInformationParser,
           routerDelegate: _router.routerDelegate,
           title: 'Templates',
-            theme: colorIndex == 0 ? buildThemeData1() :
-          colorIndex == 1 ? buildThemeData2() :
-          buildThemeData3(),
+            theme:
+            colorIndex == 0 ? buildThemeLight1() :
+            colorIndex == 1 ? buildThemeLight2() :
+            buildThemeLight3(),
+          darkTheme:
+            colorIndex == 0 ? buildThemeDark1() :
+            colorIndex == 1 ? buildThemeDark2() :
+            buildThemeDark3(),
+          themeMode: ThemeMode.system,
         );
       },
     );

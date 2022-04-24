@@ -27,6 +27,7 @@ class Theming extends ConsumerWidget {
               onPressed: () => ref.read(colorProvider.state).state = 2,
               child: const Text('Theme 3'),
             ),
+            Text('Change your system light/dark mode to see the effects')
           ],
         ),
       ),
