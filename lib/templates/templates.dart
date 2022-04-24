@@ -44,6 +44,19 @@ class Templates extends StatelessWidget {
               color: Colors.teal[100],
             ),
           ),
+          GestureDetector(
+            onTap: () => context.push('/theming'),
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              child: Column(
+                children: <Widget>[
+                  Expanded(child: Lottie.asset('assets/theming.json')),
+                  Text('Theming', style: Theme.of(context).textTheme.headline6,),
+                ],
+              ),
+              color: Colors.teal[100],
+            ),
+          ),
         ],
       ),
     );
