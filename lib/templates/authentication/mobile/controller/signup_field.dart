@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../service/appwrite/appwrite_service.dart';
+
 class SignUpField extends StatefulWidget {
   const SignUpField({
     Key? key,
@@ -13,6 +15,9 @@ class SignUpField extends StatefulWidget {
 class _SignUpFieldState extends State<SignUpField> {
   final _formKey = GlobalKey<FormState>();
   bool _isObscured = true;
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +28,7 @@ class _SignUpFieldState extends State<SignUpField> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50),
             child: TextFormField(
+              controller: _nameController,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.person),
                 border: OutlineInputBorder(),
@@ -44,7 +50,7 @@ class _SignUpFieldState extends State<SignUpField> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50),
             child: TextFormField(
-              obscureText: true,
+              controller: _emailController,
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.email),
                 border: OutlineInputBorder(),
@@ -66,6 +72,7 @@ class _SignUpFieldState extends State<SignUpField> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 50),
             child: TextFormField(
+              controller: _passwordController,
               obscureText: _isObscured,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.lock),
@@ -79,7 +86,7 @@ class _SignUpFieldState extends State<SignUpField> {
                     });
                   },
                 ),
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 labelText: 'Create Password',
                 labelStyle: const TextStyle(
                   color: Colors.grey,
@@ -111,9 +118,19 @@ class _SignUpFieldState extends State<SignUpField> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      print('success');
+                      try {
+                        await AppWriteService.instance.account?.create(
+                          userId: 'unique()',
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                          name: _nameController.text,
+                        );
+                      } catch (e) {
+                        print(e);
+                      }
+
                     }
                   },
                   child: const Text(

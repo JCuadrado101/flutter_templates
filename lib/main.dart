@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_templates/templates/authentication/mobile/pages/auth.dart';
+import 'package:flutter_templates/templates/authentication/mobile/controller/check_auth.dart';
 import 'package:flutter_templates/templates/authentication/mobile/pages/login.dart';
 import 'package:flutter_templates/templates/authentication/mobile/pages/sign_up.dart';
 import 'package:flutter_templates/templates/authentication/service/appwrite/appwrite_service.dart';
-import 'package:flutter_templates/templates/authentication/service/provider/login_provider.dart';
+import 'package:flutter_templates/templates/riverpod/river_pod.dart';
+import 'package:flutter_templates/templates/riverpod/river_pod_test.dart';
 import 'package:flutter_templates/templates/templates.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: 'assets/environment/env');
   await AppWriteService.instance.init();
-  // await dotenv.load(fileName: 'assets/env/env');
   runApp(
-    MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => LoginProvider()),],
-      child: const MyApp()
+    const ProviderScope(
+      child: MyApp()
     )
   );
 }
@@ -37,9 +38,9 @@ class _MyAppState extends State<MyApp> {
         builder: (BuildContext context, GoRouterState state) => const Templates(),
       ),
       GoRoute(
-        name: 'authentication',
-        path: '/authentication',
-        builder: (BuildContext context, GoRouterState state) => const Authentication(),
+        name: 'checkAuth',
+        path: '/checkAuth',
+        builder: (BuildContext context, GoRouterState state) => const CheckAuth(),
       ),
       GoRoute(
         name: 'login',
@@ -50,6 +51,16 @@ class _MyAppState extends State<MyApp> {
         name: 'signup',
         path: '/signup',
         builder: (BuildContext context, GoRouterState state) => const SignUp(),
+      ),
+      GoRoute(
+        name: 'riverPod',
+        path: '/riverPod',
+        builder: (BuildContext context, GoRouterState state) => const RiverPod(),
+      ),
+      GoRoute(
+        name: 'riverPodTest',
+        path: '/riverPodTest',
+        builder: (BuildContext context, GoRouterState state) => const RiverPodTest(),
       ),
     ],
   );

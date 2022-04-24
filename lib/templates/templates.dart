@@ -19,13 +19,26 @@ class Templates extends StatelessWidget {
         crossAxisCount: 2,
         children: <Widget>[
           GestureDetector(
-            onTap: () => context.push('/authentication'),
+            onTap: () => context.push('/checkAuth'),
             child: Container(
               padding: const EdgeInsets.all(8),
               child: Column(
                 children: <Widget>[
                   Expanded(child: Lottie.asset('assets/authentication.json')),
                   Text('Authentication', style: Theme.of(context).textTheme.headline6,),
+                ],
+              ),
+              color: Colors.teal[100],
+            ),
+          ),
+          GestureDetector(
+            onTap: () => context.push('/riverpod'),
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              child: Column(
+                children: <Widget>[
+                  const Expanded(child: Image(image: AssetImage('assets/riverpod.png'))),
+                  Text('Riverpod', style: Theme.of(context).textTheme.headline6,),
                 ],
               ),
               color: Colors.teal[100],
