@@ -9,12 +9,12 @@ class RiverPodTest extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('RiverPod Test'),
+        title: const Text('Connecting State'),
       ),
       body: Center(
         child: Consumer(builder: (context, ref, _) {
           final count = ref.watch(counterProvider.state).state;
-          return Text('$count');
+          return Text('$count', style: const TextStyle(fontSize: 48));
         }),
       ),
       persistentFooterButtons: [

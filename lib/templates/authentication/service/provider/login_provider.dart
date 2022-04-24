@@ -1,12 +1,3 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LoginProvider extends ChangeNotifier {
-  String? _sessionToken;
-
-  String? get sessionToken => _sessionToken;
-
-  void setSessionToken(String? token) {
-    _sessionToken = token;
-    notifyListeners();
-  }
-}
+final loginProvider = StateProvider((ref) => '');

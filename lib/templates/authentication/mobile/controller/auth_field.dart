@@ -13,8 +13,8 @@ class AuthField extends StatefulWidget {
 class _AuthFieldState extends State<AuthField> {
   final _formKey = GlobalKey<FormState>();
   bool _isObscured = true;
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

@@ -10,7 +10,6 @@ class RiverPod extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         title: const Text('RiverPod'),
       ),
       body: Center(
@@ -21,10 +20,6 @@ class RiverPod extends ConsumerWidget {
               final count = ref.watch(counterProvider.state).state;
               return Text('$count', style: const TextStyle(fontSize: 30),);
             }),
-            ElevatedButton(
-              onPressed: () => context.push('/riverPodTest'),
-              child: const Text('Next Page')
-            ),
           ],
         ),
       ),
@@ -35,9 +30,11 @@ class RiverPod extends ConsumerWidget {
         ),
         IconButton(
           icon: const Icon(Icons.remove),
-          onPressed: () {
-            ref.read(counterProvider.state).state--;
-          },
+          onPressed: () => ref.read(counterProvider.state).state--,
+        ),
+        ElevatedButton(
+          onPressed: () => context.push('/riverPodTest'),
+          child: const Text('Next Page')
         ),
       ],
     );

@@ -8,6 +8,9 @@ class Authentication extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.purple,
+      ),
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -60,7 +63,7 @@ class Authentication extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onPressed: () => context.pushNamed('login'),
+                  onPressed: () => context.push('/login'),
                   child: const Text(
                     'Log In',
                     style: TextStyle(
@@ -87,7 +90,7 @@ class Authentication extends StatelessWidget {
                       ),
                     ),
                   ),
-                  onPressed: () => context.pushNamed('signup'),
+                  onPressed: () => context.push('/signup'),
                   child: const Text(
                     'Sign Up',
                     style: TextStyle(
