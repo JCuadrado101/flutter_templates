@@ -32,12 +32,12 @@ class Templates extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () => context.push('/checkAuth'),
+            onTap: () => context.push('/riverpod'),
             child: Container(
               padding: const EdgeInsets.all(8),
               child: Column(
                 children: <Widget>[
-                  const Expanded(child: Image(image: AssetImage('riverpod.png'))),
+                  const Expanded(child: Image(image: AssetImage('assets/riverpod.png'))),
                   Text('Riverpod', style: Theme.of(context).textTheme.headline6,),
                 ],
               ),
