@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_templates/templates/authentication/mobile/controller/check_auth.dart';
-import 'package:flutter_templates/templates/authentication/mobile/pages/login.dart';
-import 'package:flutter_templates/templates/authentication/mobile/pages/sign_up.dart';
+import 'package:flutter_templates/service/routes/gorouter.dart';
 import 'package:flutter_templates/templates/authentication/service/appwrite/appwrite_service.dart';
-import 'package:flutter_templates/templates/riverpod/river_pod.dart';
-import 'package:flutter_templates/templates/riverpod/river_pod_test.dart';
-import 'package:flutter_templates/templates/templates.dart';
+import 'package:flutter_templates/templates/theming/theme.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final colorProvider = StateProvider((ref) => 0);
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,54 +19,23 @@ void main() async {
   );
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
-
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final _router = GoRouter(
-    routes: [
-      GoRoute(
-        name: 'templates',
-        path: '/',
-        builder: (BuildContext context, GoRouterState state) => const Templates(),
-      ),
-      GoRoute(
-        name: 'checkAuth',
-        path: '/checkAuth',
-        builder: (BuildContext context, GoRouterState state) => const CheckAuth(),
-      ),
-      GoRoute(
-        name: 'login',
-        path: '/login',
-        builder: (BuildContext context, GoRouterState state) => const Login(),
-      ),
-      GoRoute(
-        name: 'signup',
-        path: '/signup',
-        builder: (BuildContext context, GoRouterState state) => const SignUp(),
-      ),
-      GoRoute(
-        name: 'riverPod',
-        path: '/riverPod',
-        builder: (BuildContext context, GoRouterState state) => const RiverPod(),
-      ),
-      GoRoute(
-        name: 'riverPodTest',
-        path: '/riverPodTest',
-        builder: (BuildContext context, GoRouterState state) => const RiverPodTest(),
-      ),
-    ],
-  );
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routeInformationParser: _router.routeInformationParser,
-      routerDelegate: _router.routerDelegate,
-      title: 'Flutter Demo',
+  Widget build(BuildContext context, WidgetRef ref) {
+    final _router = GoRouter(routes: templateRoutes());
+    return Consumer(
+      builder: (context, ref, _) {
+        final colorIndex = ref.watch(colorProvider);
+        return MaterialApp.router(
+          routeInformationParser: _router.routeInformationParser,
+          routerDelegate: _router.routerDelegate,
+          title: 'Templates',
+            theme: colorIndex == 0 ? buildThemeData1() :
+          colorIndex == 1 ? buildThemeData2() :
+          buildThemeData3(),
+        );
+      },
     );
   }
 }

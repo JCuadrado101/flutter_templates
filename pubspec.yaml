@@ -69,6 +69,7 @@ flutter:
    - assets/logo_auth.json
    - assets/environment/env
    - assets/riverpod.png
+   - assets/theming.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
