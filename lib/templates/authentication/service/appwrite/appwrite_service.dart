@@ -1,7 +1,6 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../provider/login_provider.dart';
@@ -21,7 +20,7 @@ class AppWriteService {
 
   init() {
     client
-        .setEndpoint(dotenv.env['PROJECTID']!)
+        .setEndpoint('http://localhost/v1')
         .setProject('625769aec7ef86b7e582')
         .setSelfSigned();
     account = Account(client);
@@ -46,15 +45,17 @@ class AppWriteService {
     }
   }
 
-  Future<void> createSession(String email, String password, BuildContext context, WidgetRef ref) async {
+  Future<Object?> createSession(String email, String password, BuildContext context, WidgetRef ref) async {
     try {
       final response = await account?.createSession(
         email: email,
         password: password,
       );
-      ref.read(loginProvider.state).state = response!.providerAccessToken;
+      ref.read(loginProvider.state).state = response!.userId;
+      return response;
     } on AppwriteException catch (e) {
       print(e.message);
+      return e.message;
     }
   }
 

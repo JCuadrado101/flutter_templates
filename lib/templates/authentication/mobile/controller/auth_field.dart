@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_templates/templates/authentication/service/appwrite/appwrite_service.dart';
 import 'package:go_router/go_router.dart';
 
 class AuthField extends StatefulWidget {
@@ -92,30 +94,35 @@ class _AuthFieldState extends State<AuthField> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.purple,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 20,
-                        horizontal: 151
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                Consumer(
+                  builder: (context, ref, _) {
+                      return ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.purple,
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 20,
+                              horizontal: 151
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            AppWriteService.instance.createSession(_emailController.text, _passwordController.text, context, ref);
+                          }
+                        },
+                        child: const Text(
+                          'Login',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        ),
+                      );
+                    },
+                    child: const Text('Sign In'),
                   ),
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-
-                    }
-                  },
-                  child: const Text(
-                    'Login',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
