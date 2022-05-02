@@ -9,8 +9,10 @@ class CheckAuth extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final session = ref.watch(loginProvider.state);
-    if (session != '') { const Success(); }
-    return const Authentication();
+    return Consumer(builder: (context, ref, _) {
+      final session = ref.watch(loginProvider.state).state == '';
+      if (!session) return const Success();
+      return const Authentication();
+    });
   }
 }
